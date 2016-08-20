@@ -1,0 +1,27 @@
+--- a/drivers/net/Kconfig	2016-07-12 00:31:24.000000000 +0800
++++ b/drivers/net/Kconfig	2016-08-19 20:40:57.762943797 +0800
+@@ -103,6 +103,8 @@
+ 	  adaptor below. You also should have said Y to "SCSI support" and
+ 	  "SCSI generic support".
+ 
++source "drivers/net/hnd/Kconfig"
++
+ config IFB
+ 	tristate "Intermediate Functional Block support"
+ 	depends on NET_CLS_ACT
+--- a/drivers/net/Makefile	2016-07-12 00:31:24.000000000 +0800
++++ b/drivers/net/Makefile	2016-08-19 20:53:10.003045014 +0800
+@@ -65,6 +65,13 @@
+ obj-$(CONFIG_XEN_NETDEV_BACKEND) += xen-netback/
+ 
+ obj-$(CONFIG_USB_NET_DRIVERS) += usb/
++obj-$(CONFIG_DHDAP)             += dhd/
++obj-$(CONFIG_HND)               += hnd/
++obj-$(CONFIG_WL) += wl/
++obj-$(CONFIG_PROXYARP) += proxyarp/
++obj-$(CONFIG_EMF) += emf/
++obj-$(CONFIG_IGS) += igs/
++#obj-m += switch/
+ 
+ obj-$(CONFIG_HYPERV_NET) += hyperv/
+ obj-$(CONFIG_NTB_NETDEV) += ntb_netdev.o

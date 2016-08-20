@@ -320,3 +320,54 @@ CONFIG_ZBOOT_ROM_TEXT=0x0
 CONFIG_ZLIB_DEFLATE=y
 CONFIG_ZLIB_INFLATE=y
 CONFIG_ZONE_DMA_FLAG=0
+
+#
+# Broadcom HND network devices
+#
+CONFIG_HND=y
+CONFIG_ET=m
+CONFIG_ET_47XX=y
+CONFIG_ET_ALL_PASSIVE_ON=y
+# CONFIG_ET_ALL_PASSIVE_RUNTIME is not set
+CONFIG_BCM_CTF=m
+# CONFIG_WL_EMULATOR is not set
+CONFIG_BCM57XX=m
+CONFIG_DHDAP=m
+CONFIG_WL=m
+CONFIG_BCM80211AC=y
+# CONFIG_WAPI is not set
+# CONFIG_WL_USE_AP is not set
+# CONFIG_WL_USE_AP_SDSTD is not set
+# CONFIG_WL_USE_STA is not set
+CONFIG_WL_USE_APSTA=y
+# CONFIG_WL_USE_AP_ONCHIP_G is not set
+# CONFIG_WL_USE_STA_ONCHIP_G is not set
+# CONFIG_WL_USE_APSTA_ONCHIP_G is not set
+# CONFIG_WL_USBAP is not set
+CONFIG_WL_AP="wlconfig_lx_router_ap"
+CONFIG_WL_AP_SDSTD="wlconfig_lx_router_ap_sdstd"
+CONFIG_WL_STA="wlconfig_lx_router_sta"
+CONFIG_WL_APSTA="wlconfig_lx_router_apsta"
+CONFIG_WL_AP_ONCHIP_G="wlconfig_lx_router_ap_1chipG"
+CONFIG_WL_STA_ONCHIP_G="wlconfig_lx_router_sta_1chipG"
+CONFIG_WL_HIGH="wlconfig_lx_router_high"
+CONFIG_WL_ALL_PASSIVE_ON=y
+# CONFIG_WL_ALL_PASSIVE_RUNTIME is not set
+# CONFIG_DPSTA is not set
+CONFIG_EMF=m
+CONFIG_IGS=m
+# CONFIG_PLC is not set
+# CONFIG_PROXYARP is not set
+# CONFIG_NET_TEAM is not set
+# CONFIG_MACVLAN is not set
+# CONFIG_IPVLAN is not set
+# CONFIG_VXLAN is not set
+# CONFIG_NETCONSOLE is not set
+# CONFIG_NETPOLL is not set
+# CONFIG_NET_POLL_CONTROLLER is not set
+# CONFIG_TUN is not set
+# CONFIG_TUN_VNET_CROSS_LE is not set
+# CONFIG_VETH is not set
+# CONFIG_NLMON is not set
+# CONFIG_ARCNET is not set
+

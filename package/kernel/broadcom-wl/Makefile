@@ -12,14 +12,11 @@ PKG_NAME:=broadcom-wl
 PKG_VERSION:=5.10.56.27.3
 PKG_RELEASE:=8
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)_$(ARCH).tar.bz2
-PKG_SOURCE_URL:=http://downloads.openwrt.org/sources
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)_$(ARCH).tar.gz
+PKG_SOURCE_URL:=http://192.168.1.200/
 
-PKG_MD5SUM.mipsel:=3363e3a6b3d9d73c49dea870c7834eac
-PKG_MD5SUM.mips:=f8de63debc75333d6b4e28193eb051ff
-PKG_MD5SUM:=$(PKG_MD5SUM.$(ARCH))
+PKG_MD5SUM:=945f80617dd1aa19c001b77e95046940
 
-PKG_USE_MIPS16:=0
 PKG_FLAGS:=nonshared
 
 include $(INCLUDE_DIR)/package.mk
@@ -29,13 +26,13 @@ define Package/broadcom-wl/Default
   CATEGORY:=Kernel modules
   DEPENDS:=@PACKAGE_kmod-brcm-wl||PACKAGE_kmod-brcm-wl-mini
   SUBMENU:=Proprietary BCM43xx WiFi driver
-  SUBMENUDEP:=@TARGET_brcm47xx||TARGET_brcm63xx
+  SUBMENUDEP:=@TARGET_brcm47xx||TARGET_brcm63xx ||TARGET_bcm53xx
 endef
 
 define KernelPackage/brcm-wl/Default
   $(call Package/broadcom-wl/Default)
   SECTION:=kernel
-  DEPENDS:=@TARGET_brcm47xx||TARGET_brcm63xx +wireless-tools
+  DEPENDS:=@TARGET_brcm47xx||TARGET_brcm63xx||TARGET_bcm53xx +wireless-tools
   TITLE:=Kernel driver for BCM43xx chipsets
   FILES:=$(PKG_BUILD_DIR)/driver$(1)/wl.ko $(PKG_BUILD_DIR)/glue/wl_glue.ko
   AUTOLOAD:=$(call AutoLoad,30,wl_glue wl)
@@ -103,7 +100,6 @@ MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
 define Build/Prepare
 	$(call Build/Prepare/Default)
 	$(CP) $(PKG_BUILD_DIR)/driver $(PKG_BUILD_DIR)/driver-mini
-	$(CP) ./src/glue $(PKG_BUILD_DIR)/glue
 endef
 
 define Build/Compile
@@ -132,7 +128,7 @@ define Build/Compile
 
 	$(TARGET_CC) -o $(PKG_BUILD_DIR)/wlc \
 		-I$(PKG_BUILD_DIR)/shared -I$(PKG_BUILD_DIR)/driver/include \
-		./src/wlc.c $(PKG_BUILD_DIR)/shared/libshared.a
+		$(PKG_BUILD_DIR)/wlc.c $(PKG_BUILD_DIR)/shared/libshared.a
 
 	$(TARGET_CC) -o $(PKG_BUILD_DIR)/nas \
 		$(PKG_BUILD_DIR)/nas_exe.o \
