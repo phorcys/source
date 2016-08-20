@@ -23,11 +23,11 @@ EXTRA_AFLAGS+=-I$(srctree)/brcm/include -I$(srctree)/brcm/shared/bcmwifi/include
 obj-${CONFIG_IGS} := igs.o
 
 ifeq ($(CONFIG_MIPS),y)
-EMFOSRC := ../../../brcm/mipsel/igs/bin
-EMFCSRC := ../../../brcm/mipsel/igs
+IGSOSRC := ../../../brcm/mipsel/igs/bin
+IGSCSRC := ../../../brcm/mipsel/igs
 else
-EMFOSRC := ../../../brcm/arm/igs/bin
-EMFCSRC := ../../../brcm/arm/igs
+IGSOSRC := ../../../brcm/arm/igs/bin
+IGSCSRC := ../../../brcm/arm/igs
 endif
 IGSOBJ := $(IGSOSRC)/igsc.o $(IGSOSRC)/igsc_sdb.o $(IGSOSRC)/osl_linux.o $(IGSCSRC)/igs_linux.o
 SYMOBJ := $(IGSOSRC)/igsc.o $(IGSOSRC)/igsc_sdb.o $(IGSOSRC)/osl_linux.o

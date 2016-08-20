@@ -25,3 +25,10 @@
  
  obj-$(CONFIG_HYPERV_NET) += hyperv/
  obj-$(CONFIG_NTB_NETDEV) += ntb_netdev.o
+--- a/net/Makefile 2016-07-12 00:31:24.000000000 +0800
++++ b/net/Makefile    2016-08-20 15:09:19.449990049 +0800
+@@ -77,3 +77,4 @@
+ ifneq ($(CONFIG_NET_L3_MASTER_DEV),)
+ obj-y                          += l3mdev/
+ endif
++obj-$(CONFIG_RFKILL) += rfkill/

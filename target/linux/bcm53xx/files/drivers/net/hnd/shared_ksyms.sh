@@ -23,6 +23,10 @@ cat <<EOF
 #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,36)
 #include <linux/config.h>
 #endif
+
+int brnf_call_emf __read_mostly = 0;
+EXPORT_SYMBOL(brnf_call_emf);
+
 EOF
 
 for file in $* ; do
